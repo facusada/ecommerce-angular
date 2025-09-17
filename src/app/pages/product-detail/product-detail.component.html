@@ -20,9 +20,14 @@
 
       <section>
         <h2>Caracteristicas principales</h2>
-        <ul>
-          <li *ngFor="let feature of product.features">{{ feature }}</li>
-        </ul>
+        <ng-container *ngIf="product.features?.length; else noFeatures">
+          <ul>
+            <li *ngFor="let feature of product.features">{{ feature }}</li>
+          </ul>
+        </ng-container>
+        <ng-template #noFeatures>
+          <p class="no-features">No tenemos detalles adicionales para este producto por ahora.</p>
+        </ng-template>
       </section>
 
       <a routerLink="/contact" class="btn-primary">Consultar disponibilidad</a>

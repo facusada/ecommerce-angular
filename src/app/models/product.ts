@@ -5,5 +5,5 @@ export interface Product {
   category: string;
   description: string;
   image: string;
-  features: string[];
+  features?: string[];
 }
