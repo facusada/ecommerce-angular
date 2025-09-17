@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "name": "Aurora Auriculares Inalambricos",
+    "price": 129.99,
+    "category": "Audio",
+    "description": "Aurora combina audio espacial envolvente con comodidad para todo el dia y una bateria de 30 horas para que puedas mantener el foco donde sea que trabajes o disfrutes.",
+    "image": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=80",
+    "features": [
+      "Bluetooth 5.3 con emparejamiento multipunto",
+      "Cancelacion activa de ruido con modo ambiente",
+      "Almohadillas de espuma con memoria y armazon ultraliviano"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Lumen Lampara Inteligente",
+    "price": 89.5,
+    "category": "Hogar",
+    "description": "Una lampara de mesa inteligente con iluminacion adaptable, carga inalambrica integrada y escenas ambientales que podes programar desde la app.",
+    "image": "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80",
+    "features": [
+      "16 millones de combinaciones de color",
+      "Base con carga inalambrica Qi",
+      "Monitoreo de consumo desde la app companera"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Nimbus Kit de Productividad",
+    "price": 219.0,
+    "category": "Oficina",
+    "description": "Renova tu espacio de trabajo con un teclado mecanico, un mouse ergonomico y una alfombrilla reversible pensados para potenciar tu productividad diaria.",
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
+    "features": [
+      "Switches mecanicos intercambiables en caliente",
+      "Mouse inalambrico de baja latencia 2.4 GHz",
+      "Alfombrilla resistente al agua en cuero vegano"
+    ]
+  }
+]
