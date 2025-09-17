@@ -13,7 +13,15 @@
         <span class="category">{{ product.category }}</span>
         <span class="price">{{ product.price | currency:'USD' }}</span>
       </div>
-      <a [routerLink]="['/product', product.id]" class="btn-secondary">Ver detalle</a>
+      <div class="card-actions">
+        <a [routerLink]="['/product', product.id]" class="btn-secondary">Ver detalle</a>
+        <div class="quantity-row" role="group" aria-label="Selector de cantidad">
+          <button type="button" (click)="decreaseQuantity(product.id)" aria-label="Reducir cantidad">-</button>
+          <span class="quantity">{{ getQuantity(product.id) }}</span>
+          <button type="button" (click)="increaseQuantity(product.id)" aria-label="Aumentar cantidad">+</button>
+        </div>
+        <button type="button" class="btn-cart" (click)="addToCart(product)">Agregar al carrito</button>
+      </div>
     </div>
   </article>
 </section>

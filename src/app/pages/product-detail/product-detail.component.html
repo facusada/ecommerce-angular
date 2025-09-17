@@ -9,6 +9,15 @@
       <p class="description">{{ product.description }}</p>
       <p class="price">{{ product.price | currency:'USD' }}</p>
 
+      <div class="purchase-actions">
+        <div class="quantity-control" role="group" aria-label="Selector de cantidad">
+          <button type="button" (click)="decreaseQuantity()" aria-label="Reducir cantidad">-</button>
+          <span class="quantity">{{ quantity }}</span>
+          <button type="button" (click)="increaseQuantity()" aria-label="Aumentar cantidad">+</button>
+        </div>
+        <button type="button" class="btn-cart" (click)="addToCart(product)">Agregar al carrito</button>
+      </div>
+
       <section>
         <h2>Caracteristicas principales</h2>
         <ul>

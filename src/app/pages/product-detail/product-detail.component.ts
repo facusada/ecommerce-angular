@@ -23,4 +23,20 @@ export class ProductDetailComponent {
       return this.productService.getProductById(id);
     })
   );
+
+  quantity = 1;
+
+  increaseQuantity(): void {
+    this.quantity += 1;
+  }
+
+  decreaseQuantity(): void {
+    if (this.quantity > 1) {
+      this.quantity -= 1;
+    }
+  }
+
+  addToCart(product: Product): void {
+    console.log(`Agregar ${this.quantity} unidad(es) de ${product.name} al carrito (pendiente de implementar).`);
+  }
 }
