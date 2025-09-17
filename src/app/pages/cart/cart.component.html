@@ -1,0 +1,63 @@
+<section class="cart">
+  <header class="cart-header">
+    <h1>Carrito</h1>
+    <p class="subtitle">Revisa tus productos antes de confirmar la compra.</p>
+  </header>
+
+  <ng-container *ngIf="cartItems().length; else emptyState">
+    <div class="cart-content">
+      <ul class="cart-list">
+        <li
+          class="cart-item"
+          *ngFor="let item of cartItems(); trackBy: trackByProductId"
+        >
+          <img
+            [src]="item.product.image"
+            [alt]="item.product.name"
+            loading="lazy"
+          />
+          <div class="item-info">
+            <h2>{{ item.product.name }}</h2>
+            <p class="meta">Cantidad: {{ item.quantity }}</p>
+            <p class="price">{{ item.product.price | currency:'USD' }}</p>
+            <p class="total">
+              Subtotal:
+              {{ item.product.price * item.quantity | currency:'USD' }}
+            </p>
+          </div>
+        </li>
+      </ul>
+
+      <aside class="summary">
+        <h2>Resumen</h2>
+        <dl>
+          <div>
+            <dt>Subtotal</dt>
+            <dd>{{ subtotal() | currency:'USD' }}</dd>
+          </div>
+          <div>
+            <dt>Impuestos estimados (21%)</dt>
+            <dd>{{ taxEstimate() | currency:'USD' }}</dd>
+          </div>
+          <div class="total-row">
+            <dt>Total</dt>
+            <dd>{{ total() | currency:'USD' }}</dd>
+          </div>
+        </dl>
+        <button type="button" class="btn-checkout" disabled>
+          Finalizar compra
+        </button>
+        <small class="note">
+          Integración pendiente. Este botón se habilitará cuando conectemos el flujo de pago.
+        </small>
+      </aside>
+    </div>
+  </ng-container>
+
+  <ng-template #emptyState>
+    <div class="empty">
+      <p>Tu carrito todavía está vacío.</p>
+      <a routerLink="/" class="btn-return">Descubrir productos</a>
+    </div>
+  </ng-template>
+</section>

@@ -3,6 +3,7 @@
     <a routerLink="/" class="brand">Tech Market</a>
     <div class="nav-links">
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+      <a routerLink="/cart" routerLinkActive="active">Carrito</a>
       <a routerLink="/contact" routerLinkActive="active">Contacto</a>
     </div>
   </nav>
@@ -15,3 +16,5 @@
 <footer class="site-footer">
   <small>© {{ currentYear }} Tech Market. Todos los derechos reservados.</small>
 </footer>
+
+<app-toast-container></app-toast-container>

@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
+import { CartService } from '../../services/cart.service';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +17,8 @@ import { ProductService } from '../../services/product.service';
 })
 export class HomeComponent {
   private productService = inject(ProductService);
+  private cartService = inject(CartService);
+  private toastService = inject(ToastService);
   readonly products$: Observable<Product[]> = this.productService.getProducts();
 
   private readonly quantities: Record<number, number> = {};
@@ -41,6 +45,12 @@ export class HomeComponent {
 
   addToCart(product: Product): void {
     const quantity = this.getQuantity(product.id);
-    console.log(`Agregar ${quantity} unidad(es) de ${product.name} al carrito (pendiente de implementar).`);
+    const result = this.cartService.addItem(product, quantity);
+
+    if (result.success) {
+      this.toastService.showSuccess(result.message);
+    } else {
+      this.toastService.showError(result.message);
+    }
   }
 }

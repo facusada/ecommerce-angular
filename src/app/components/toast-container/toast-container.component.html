@@ -1,0 +1,11 @@
+<div class="toast-wrapper" *ngIf="toastService.messages().length">
+  <div
+    class="toast"
+    *ngFor="let toast of toastService.messages(); trackBy: trackByToast"
+    [class.success]="toast.type === 'success'"
+    [class.error]="toast.type === 'error'"
+  >
+    <span class="toast-text">{{ toast.text }}</span>
+    <button type="button" class="toast-close" (click)="dismiss(toast.id)">×</button>
+  </div>
+</div>

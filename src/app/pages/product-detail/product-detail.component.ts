@@ -5,6 +5,8 @@ import { Observable, switchMap } from 'rxjs';
 
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
+import { CartService } from '../../services/cart.service';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -16,6 +18,8 @@ import { ProductService } from '../../services/product.service';
 export class ProductDetailComponent {
   private route = inject(ActivatedRoute);
   private productService = inject(ProductService);
+  private cartService = inject(CartService);
+  private toastService = inject(ToastService);
 
   readonly product$: Observable<Product | undefined> = this.route.paramMap.pipe(
     switchMap((params) => {
@@ -37,6 +41,12 @@ export class ProductDetailComponent {
   }
 
   addToCart(product: Product): void {
-    console.log(`Agregar ${this.quantity} unidad(es) de ${product.name} al carrito (pendiente de implementar).`);
+    const result = this.cartService.addItem(product, this.quantity);
+
+    if (result.success) {
+      this.toastService.showSuccess(result.message);
+    } else {
+      this.toastService.showError(result.message);
+    }
   }
 }
