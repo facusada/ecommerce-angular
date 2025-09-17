@@ -2,30 +2,31 @@ name: Deploy Angular to GitHub Pages
 
 on:
   push:
-    branches:
-      - main   # cada vez que hagas push en main, se va a desplegar
+    branches: [ main ]
+
+permissions:
+  contents: write   # 👈 necesario para pushear a gh-pages
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Install dependencies
+      - name: Install deps
         run: npm ci
 
-      - name: Build Angular app
+      - name: Build Angular
         run: npm run build -- --configuration production --base-href /ecommerce-angular/
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages    # rama donde se publica
-          folder: dist/ecommerce-app  # carpeta de salida de Angular
+          branch: gh-pages
+          folder: dist/ecommerce-app
+          clean: true
+          clean-exclude: |
+            CNAME
