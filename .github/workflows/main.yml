@@ -3,30 +3,34 @@ name: Deploy Angular to GitHub Pages
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 permissions:
-  contents: write   # 👈 necesario para pushear a gh-pages
+  contents: write
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
 
       - name: Install deps
         run: npm ci
 
-      - name: Build Angular
-        run: npm run build -- --configuration production --base-href /ecommerce-angular/
+      - name: Build (prod)
+        run: npm run build
 
-      - name: Deploy to GitHub Pages
+      - name: SPA fallback (copy 404.html)
+        run: cp dist/ecommerce-app/index.html dist/ecommerce-app/404.html
+
+      - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: dist/ecommerce-app
           clean: true
-          clean-exclude: |
-            CNAME
