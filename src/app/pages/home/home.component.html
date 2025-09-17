@@ -1,0 +1,19 @@
+<section class="hero">
+  <h1>Productos destacados</h1>
+  <p>Descubri articulos seleccionados para potenciar tu dia a dia.</p>
+</section>
+
+<section class="product-grid" *ngIf="products$ | async as products">
+  <article class="product-card" *ngFor="let product of products">
+    <img [src]="product.image" [alt]="product.name" loading="lazy" />
+    <div class="product-content">
+      <h2>{{ product.name }}</h2>
+      <p class="description">{{ product.description }}</p>
+      <div class="meta">
+        <span class="category">{{ product.category }}</span>
+        <span class="price">{{ product.price | currency:'USD' }}</span>
+      </div>
+      <a [routerLink]="['/product', product.id]" class="btn-secondary">Ver detalle</a>
+    </div>
+  </article>
+</section>

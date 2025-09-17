@@ -1,0 +1,44 @@
+<section class="contact">
+  <h1>Contacto</h1>
+  <p class="intro">Contanos que necesitas y te responderemos a la brevedad.</p>
+
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="field">
+      <label for="name">Nombre completo</label>
+      <input id="name" type="text" formControlName="name" placeholder="Ej. Sofia Gonzalez" />
+      <small class="error" *ngIf="isInvalid('name')">
+        El nombre es obligatorio y debe tener al menos 3 caracteres.
+      </small>
+    </div>
+
+    <div class="field">
+      <label for="email">Correo electronico</label>
+      <input id="email" type="email" formControlName="email" placeholder="nombre@correo.com" />
+      <small class="error" *ngIf="isInvalid('email')">
+        Ingresa un correo valido.
+      </small>
+    </div>
+
+    <div class="field">
+      <label for="message">Mensaje</label>
+      <textarea id="message" rows="5" formControlName="message" placeholder="Contanos en que podemos ayudarte"></textarea>
+      <small class="error" *ngIf="isInvalid('message')">
+        El mensaje es obligatorio y debe tener al menos 10 caracteres.
+      </small>
+    </div>
+
+    <label class="consent">
+      <input type="checkbox" formControlName="consent" />
+      <span>Acepto ser contactado por Tech Market.</span>
+    </label>
+    <small class="error" *ngIf="isInvalid('consent')">
+      Tenes que aceptar para que podamos contactarte.
+    </small>
+
+    <button type="submit" class="btn-primary">Enviar mensaje</button>
+  </form>
+
+  <p class="success" *ngIf="success">Gracias! Recibimos tu mensaje y te contactaremos pronto.</p>
+
+  <a routerLink="/" class="back-link">← Volver al inicio</a>
+</section>

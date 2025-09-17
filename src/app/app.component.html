@@ -1,0 +1,17 @@
+<header class="site-header">
+  <nav class="navbar">
+    <a routerLink="/" class="brand">Tech Market</a>
+    <div class="nav-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+      <a routerLink="/contact" routerLinkActive="active">Contacto</a>
+    </div>
+  </nav>
+</header>
+
+<main class="page-wrapper">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="site-footer">
+  <small>© {{ currentYear }} Tech Market. Todos los derechos reservados.</small>
+</footer>
